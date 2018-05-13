@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>out_tran_client</title>
+</head>
+<body>
+<div id="app-box">
+    <button type="button" onclick="test()">扫描二维码</button>
+</div>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript">
+    QRScanner.scan(function (err, text) {
+        if (err) {
+            alert(err);
+        } else {
+            alert(text);
+        }
+    });
+
+    function test() {
+        QRScanner.show();
+    }
+</script>
+</body>
+</html>
