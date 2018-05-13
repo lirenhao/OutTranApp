@@ -30,8 +30,8 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <preference name="phonegap-version" value="cli-8.0.0" />
-    <engine name="ios" spec="~4.5.4" />
-    <engine name="android" spec="~7.0.0" />
+    <engine name="ios" spec="^4.5.4" />
+    <engine name="android" spec="^7.0.0" />
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
     <plugin name="cordova-plugin-qrscanner" spec="^2.5.0" />
 </widget>
