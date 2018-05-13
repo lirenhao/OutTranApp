@@ -20,9 +20,6 @@
         <allow-intent href="market:*" />
     </platform>
     <platform name="ios">
-        <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
-            <string>需要访问相机扫描二维码</string>
-        </edit-config>
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
