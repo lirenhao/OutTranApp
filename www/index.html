@@ -11,16 +11,20 @@
 </div>
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript">
-    QRScanner.scan(function (err, text) {
-        if (err) {
-            alert(err);
-        } else {
-            alert(text);
-        }
-    });
-
     function test() {
-        QRScanner.show();
+        cordova.plugins.barcodeScanner.scan(
+            function (result) {
+                if (!result.cancelled) {
+                    alert("Barcode type is: " + result.format);
+                    alert("Decoded text is: " + result.text);
+                } else {
+                    alert("You have cancelled scan");
+                }
+            },
+            function (error) {
+                alert("Scanning failed: " + error);
+            }
+        );
     }
 </script>
 </body>

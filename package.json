@@ -12,15 +12,13 @@
     "dependencies": {
         "cordova-android": "7.0.0",
         "cordova-ios": "4.5.4",
-        "cordova-plugin-camera": "^4.0.3",
-        "cordova-plugin-qrscanner": "^2.5.0",
-        "cordova-plugin-whitelist": "^1.3.3"
+        "cordova-plugin-whitelist": "^1.3.3",
+        "phonegap-plugin-barcodescanner": "^7.1.2"
     },
     "cordova": {
         "plugins": {
             "cordova-plugin-whitelist": {},
-            "cordova-plugin-qrscanner": {},
-            "cordova-plugin-camera": {}
+            "phonegap-plugin-barcodescanner": {}
         },
         "platforms": [
             "ios",
