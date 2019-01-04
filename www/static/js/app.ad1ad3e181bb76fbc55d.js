@@ -169,7 +169,7 @@ var cardNo = window.localStorage.cardNo;
 
 var state = {
   isLoading: true,
-  url: url ? url : 'http://172.18.1.161:9999/purchase',
+  url: url ? url : 'https://eccst.sg.ebs.bankofchina.com/sgecm/merapi/purchase',
   cardNo: cardNo ? cardNo : '123456789012345678'
 };
 
