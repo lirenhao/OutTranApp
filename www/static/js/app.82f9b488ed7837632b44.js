@@ -63,13 +63,6 @@ module.exports = {"modp1":{"gen":"02","prime":"ffffffffffffffffc90fdaa22168c234c
 
 /***/ }),
 
-/***/ "61bm":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "6ZSt":
 /***/ (function(module, exports) {
 
@@ -99,6 +92,13 @@ module.exports = {"2.16.840.1.101.3.4.1.1":"aes-128-ecb","2.16.840.1.101.3.4.1.2
 /***/ }),
 
 /***/ "Gxsg":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "Ihgj":
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -165,12 +165,16 @@ var vuex_esm = __webpack_require__("NYxO");
 vue_esm["a" /* default */].use(vuex_esm["a" /* default */]);
 
 var url = window.localStorage.url;
-var cardNo = window.localStorage.cardNo;
+var merNo = window.localStorage.merNo;
+var termNo = window.localStorage.termNo;
+var tranAmt = window.localStorage.tranAmt;
 
 var state = {
   isLoading: true,
-  url: url ? url : 'https://eccst.sg.ebs.bankofchina.com/sgecm/merapi/purchase',
-  cardNo: cardNo ? cardNo : '123456789012345678'
+  url: url ? url : 'http://172.18.1.161:9999/purchase',
+  merNo: merNo ? merNo : '104767011000006',
+  termNo: termNo ? termNo : '12345678',
+  tranAmt: tranAmt ? tranAmt : 100
 };
 
 /* harmony default export */ var store = (new vuex_esm["a" /* default */].Store({
@@ -183,9 +187,17 @@ var state = {
       window.localStorage.setItem('url', url);
       state.url = url;
     },
-    UPDATE_CARD_NO: function UPDATE_CARD_NO(state, cardNo) {
-      window.localStorage.setItem('cardNo', cardNo);
-      state.cardNo = cardNo;
+    UPDATE_MER_NO: function UPDATE_MER_NO(state, merNo) {
+      window.localStorage.setItem('merNo', merNo);
+      state.merNo = merNo;
+    },
+    UPDATE_TERM_NO: function UPDATE_TERM_NO(state, termNo) {
+      window.localStorage.setItem('termNo', termNo);
+      state.termNo = termNo;
+    },
+    UPDATE_TRAN_AMT: function UPDATE_TRAN_AMT(state, tranAmt) {
+      window.localStorage.setItem('tranAmt', tranAmt);
+      state.termNo = termNo;
     }
   }
 }));
@@ -719,31 +731,16 @@ var cell_Component = cell_normalizeComponent(
 
 /* harmony default export */ var vux_src_components_cell = (cell_Component.exports);
 
-// CONCATENATED MODULE: ./src/sign.js
-var NodeRSA = __webpack_require__("jMfe");
-var sha256 = __webpack_require__("EKx1");
+// EXTERNAL MODULE: ./node_modules/vux/src/tools/date/format.js
+var format = __webpack_require__("ODCk");
 
-var privateKeyData = '-----BEGIN PRIVATE KEY-----\nMIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAKAUZV+tjiNBKhlBZbKBnzeugpdYPhh5PbHanjV0aQ+LF7vetPYhbTiCVqA3a+Chmge44+prlqd3qQCYra6OYIe7oPVq4mETa1c/7IuSlKJgxC5wMqYKxYydb1eULkrs5IvvtNddx+9O/JlyM5sTPosgFHOzr4WqkVtQ71IkR+HrAgMBAAECgYAkQLo8kteP0GAyXAcmCAkA2Tql/8wASuTX9ITD4lsws/VqDKO64hMUKyBnJGX/91kkypCDNF5oCsdxZSJgV8owViYWZPnbvEcNqLtqgs7nj1UHuX9S5yYIPGN/mHL6OJJ7sosOd6rqdpg6JRRkAKUV+tmN/7Gh0+GFXM+ug6mgwQJBAO9/+CWpCAVoGxCA+YsTMb82fTOmGYMkZOAfQsvIV2v6DC8eJrSa+c0yCOTa3tirlCkhBfB08f8U2iEPS+Gu3bECQQCrG7O0gYmFL2RX1O+37ovyyHTbst4s4xbLW4jLzbSoimL235lCdIC+fllEEP96wPAiqo6dzmdH8KsGmVozsVRbAkB0ME8AZjp/9Pt8TDXD5LHzo8mlruUdnCBcIo5TMoRG2+3hRe1dHPonNCjgbdZCoyqjsWOiPfnQ2Brigvs7J4xhAkBGRiZUKC92x7QKbqXVgN9xYuq7oIanIM0nz/wq190uq0dh5Qtow7hshC/dSK3kmIEHe8z++tpoLWvQVgM538apAkBoSNfaTkDZhFavuiVl6L8cWCoDcJBItip8wKQhXwHp0O3HLg10OEd14M58ooNfpgt+8D8/8/2OOFaR0HzA+2Dm\n-----END PRIVATE KEY-----';
+// EXTERNAL MODULE: ./src/sign.js
+var sign = __webpack_require__("nEJf");
+var sign_default = /*#__PURE__*/__webpack_require__.n(sign);
 
-var privateKey = new NodeRSA(privateKeyData, 'pkcs8', {
-  environment: 'browser'
-});
-
-var sign = function sign(data) {
-  return privateKey.encryptPrivate(sha256(data), 'base64');
-};
-
-var verity = function verity(data, sign) {
-  var dataHash = sha256(data);
-  var signHash = privateKey.decryptPublic(sign, 'base64');
-  return dataHash === signHash;
-};
-
-/* harmony default export */ var src_sign = ({
-  sign: sign,
-  verity: verity
-});
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vux-loader/src/script-loader.js!./node_modules/vux-loader/src/script-loader.js!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./src/components/Home.vue
+
+
 
 
 
@@ -763,6 +760,15 @@ var verity = function verity(data, sign) {
   computed: extends_default()({}, Object(vuex_esm["b" /* mapState */])({
     url: function url(state) {
       return state.url;
+    },
+    merNo: function merNo(state) {
+      return state.merNo;
+    },
+    termNo: function termNo(state) {
+      return state.termNo;
+    },
+    tranAmt: function tranAmt(state) {
+      return state.tranAmt;
     }
   })),
   methods: {
@@ -781,31 +787,31 @@ var verity = function verity(data, sign) {
                 orgId: "0001"
               },
               trxInfo: {
-                merchantId: "123456789012345",
-                terminalId: "12345678",
-                tranAmt: 100,
+                merchantId: _this.merNo,
+                terminalId: _this.termNo,
+                tranAmt: _this.tranAmt,
                 ccyCode: "702",
-                merTraceNo: "201901021135390001000001",
+                merTraceNo: Object(format["a" /* default */])(new Date(), 'YYYYMMDDHHmmss') + _this.termNo + "0001",
                 payLoad: result.text
               },
               certificateSignature: {
                 signature: "00000000"
               }
             };
-            var signature = src_sign.sign(stringify_default()(params));
+            var signature = sign_default.a.sign(stringify_default()(params));
             params.certificateSignature.signature = signature;
-            console.log('req', params);
+            console.log("req", params);
             _this.$http.post(_this.url, params).then(function (_ref) {
               var data = _ref.data;
 
               _this.$vux.alert.show({
-                title: '结果',
+                title: "结果",
                 content: stringify_default()(data)
               });
-              console.log('resp', data);
+              console.log("resp", data);
               var signature = params.certificateSignature.signature;
-              params.certificateSignature.signature = '00000000';
-              console.log(src_sign.verity(stringify_default()(data), signature));
+              params.certificateSignature.signature = "00000000";
+              console.log(sign_default.a.verity(stringify_default()(data), signature));
             });
           } else {
             _this.$store.commit("UPDATE_LOADING", false);
@@ -844,6 +850,8 @@ var verity = function verity(data, sign) {
 
 
 
+
+
 /* harmony default export */ var components_Home = ({
   components: {
     Logo: src_components_Logo,
@@ -853,6 +861,15 @@ var verity = function verity(data, sign) {
   computed: extends_default()({}, Object(vuex_esm["b" /* mapState */])({
     url: function url(state) {
       return state.url;
+    },
+    merNo: function merNo(state) {
+      return state.merNo;
+    },
+    termNo: function termNo(state) {
+      return state.termNo;
+    },
+    tranAmt: function tranAmt(state) {
+      return state.tranAmt;
     }
   })),
   methods: {
@@ -871,31 +888,31 @@ var verity = function verity(data, sign) {
                 orgId: "0001"
               },
               trxInfo: {
-                merchantId: "123456789012345",
-                terminalId: "12345678",
-                tranAmt: 100,
+                merchantId: _this.merNo,
+                terminalId: _this.termNo,
+                tranAmt: _this.tranAmt,
                 ccyCode: "702",
-                merTraceNo: "201901021135390001000001",
+                merTraceNo: Object(format["a" /* default */])(new Date(), 'YYYYMMDDHHmmss') + _this.termNo + "0001",
                 payLoad: result.text
               },
               certificateSignature: {
                 signature: "00000000"
               }
             };
-            var signature = src_sign.sign(stringify_default()(params));
+            var signature = sign_default.a.sign(stringify_default()(params));
             params.certificateSignature.signature = signature;
-            console.log('req', params);
+            console.log("req", params);
             _this.$http.post(_this.url, params).then(function (_ref) {
               var data = _ref.data;
 
               _this.$vux.alert.show({
-                title: '结果',
+                title: "结果",
                 content: stringify_default()(data)
               });
-              console.log('resp', data);
+              console.log("resp", data);
               var signature = params.certificateSignature.signature;
-              params.certificateSignature.signature = '00000000';
-              console.log(src_sign.verity(stringify_default()(data), signature));
+              params.certificateSignature.signature = "00000000";
+              console.log(sign_default.a.verity(stringify_default()(data), signature));
             });
           } else {
             _this.$store.commit("UPDATE_LOADING", false);
@@ -923,14 +940,14 @@ var verity = function verity(data, sign) {
     }
   }
 });
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-53f7331a","hasScoped":true,"transformToRequire":{"video":"src","source":"src","img":"src","image":"xlink:href"},"buble":{"transforms":{}}}!./node_modules/vux-loader/src/before-template-compiler-loader.js!./node_modules/vux-loader/src/template-loader.js!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/components/Home.vue
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-020d9a65","hasScoped":true,"transformToRequire":{"video":"src","source":"src","img":"src","image":"xlink:href"},"buble":{"transforms":{}}}!./node_modules/vux-loader/src/before-template-compiler-loader.js!./node_modules/vux-loader/src/template-loader.js!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/components/Home.vue
 var Home_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('logo'),_vm._v(" "),_c('group',[_c('cell',{attrs:{"title":"参数设置","link":"/url"}},[_c('svg',{staticClass:"vux-x-icon vux-x-icon-settings icon",attrs:{"slot":"icon","type":"settings","size":"20","xmlns":"http://www.w3.org/2000/svg","width":"20","height":"20","viewBox":"0 0 512 512"},slot:"icon"},[_c('path',{attrs:{"d":"M450 138.3l-47.7 48.5-2.7 2.8-1.6 1.7c-1.1.8-2.4 1.2-3.9 1.2-1.6 0-3.1-.6-4.3-1.6l-.9-.9-2.7-2.7-41.3-42.1-2.2-2.2-1.7-1.7c-1-1.5-1.6-3.4-1.6-5.3 0-1.7.6-3.2 1.6-4.4l.7-.8 2.6-2.6 47.9-48.7c-5.1-10.1-24.7-14.9-35.1-14.1-17.1 1.3-34.7 7-52.8 25.5-.7.8-1.5 1.6-2.2 2.3-24.6 26.8-29.5 62.8-19.5 95.8.7 1.4 1.3 3.1 1.6 4.6 1.1 5.5-.4 10.2-4 13.5l-37.9 36.4c-11.8-12-13.5-13.6-13.5-13.6-2-2-6-3.3-9.5-1.2l-5.9 3.6c-22.7-23.1-32.3-32.4-35.4-43.6-3.2-11.7-.3-27.3 2.7-33.1 2.5-4.6 10.3-8.9 16.9-9.4l8.6 8.8c2 2 5.1 2 7.1 0l30.9-31.4c2-2 2-5.3 0-7.3l-49.9-50.7c-2-2-5.2-2-7.1 0L156.3 97c-2 2-2 5.3 0 7.3l3.3 3.4c0 4.9-.7 12.5-4.7 16.6-6.2 6.3-18.5-1-26.5 4.7-7.9 5.6-17.9 14.6-24.3 21-6.3 6.4-30.5 31.8-47.8 74.6-17.3 42.8-4 82.5 5.4 92.9 5 5.5 14.1 11.1 12.5.7-1.6-10.5-4.2-46.9 7.7-61.8 11.9-14.9 27.6-27.1 48-28.1 19.6-1 30.9 5.7 56.3 31.5l-2.8 5.2c-1.8 3.4-.8 7.7 1.2 9.7 0 0 1.5 1.6 12.1 12.4l-97.2 93.2c-16.2 14.3-15.3 40.5-.3 56 15.2 15.2 41.1 16.3 55.2-.2l91.4-98.6c49.1 52.3 93.3 107.4 93.3 107.4 2 2 5.2 2 7.1 0l49.9-50.7c2-2 2-5.2 0-7.3 0 0-55.2-45.7-107-96.2l35.5-38.3c3.3-3.7 7.9-5.2 13.3-4.1 1.5.3 3.1 1 4.5 1.7 32.4 10.2 67.8 5.2 94-19.8.8-.7 1.5-1.5 2.3-2.3 18.1-18.4 23.7-36.4 25-53.8 1-10.6-3.5-30.3-13.7-35.8z"}})])]),_vm._v(" "),_c('cell',{attrs:{"title":"扫码支付","is-link":""},nativeOn:{"click":function($event){_vm.toScanPay()}}},[_c('svg',{staticClass:"vux-x-icon vux-x-icon-qr-scanner icon",attrs:{"slot":"icon","type":"qr-scanner","size":"20","xmlns":"http://www.w3.org/2000/svg","width":"20","height":"20","viewBox":"0 0 512 512"},slot:"icon"},[_c('path',{attrs:{"d":"M96 124.171c0-6.938 5.232-12.171 12.171-12.171H176V64h-66.829C75.717 64 48 90.717 48 124.171V192h48v-67.829zM403.579 64H336v48h67.219c6.938 0 12.781 5.232 12.781 12.171V192h48v-67.829C464 90.717 437.033 64 403.579 64zM416 386.829c0 6.938-5.232 12.171-12.171 12.171H336v49h67.829C437.283 448 464 420.283 464 386.829V320h-48v66.829zM108.171 399C101.232 399 96 393.768 96 386.829V320H48v66.829C48 420.283 75.717 448 109.171 448H176v-49h-67.829z"}})])])],1)],1)}
 var Home_staticRenderFns = []
 var Home_esExports = { render: Home_render, staticRenderFns: Home_staticRenderFns }
 /* harmony default export */ var selectortype_template_index_0_src_components_Home = (Home_esExports);
 // CONCATENATED MODULE: ./src/components/Home.vue
 function Home_injectStyle (ssrContext) {
-  __webpack_require__("61bm")
+  __webpack_require__("hSSI")
 }
 var Home_normalizeComponent = __webpack_require__("VU/8")
 /* script */
@@ -943,7 +960,7 @@ var Home___vue_template_functional__ = false
 /* styles */
 var Home___vue_styles__ = Home_injectStyle
 /* scopeId */
-var Home___vue_scopeId__ = "data-v-53f7331a"
+var Home___vue_scopeId__ = "data-v-020d9a65"
 /* moduleIdentifier (server only) */
 var Home___vue_module_identifier__ = null
 var Home_Component = Home_normalizeComponent(
@@ -2228,16 +2245,28 @@ var x_input_Component = x_input_normalizeComponent(
     url: function url(state) {
       return state.url;
     },
-    cardNo: function cardNo(state) {
-      return state.cardNo;
+    merNo: function merNo(state) {
+      return state.merNo;
+    },
+    termNo: function termNo(state) {
+      return state.termNo;
+    },
+    tranAmt: function tranAmt(state) {
+      return state.tranAmt;
     }
   })),
   methods: {
     updateUrl: function updateUrl(url) {
       this.$store.commit('UPDATE_URL', url);
     },
-    updateCardNo: function updateCardNo(cardNo) {
-      this.$store.commit('UPDATE_CARD_NO', cardNo);
+    updateMerNo: function updateMerNo(merNo) {
+      this.$store.commit('UPDATE_MER_NO', merNo);
+    },
+    updateTermNo: function updateTermNo(termNo) {
+      this.$store.commit('UPDATE_TERM_NO', termNo);
+    },
+    updateTranAmt: function updateTranAmt(tranAmt) {
+      this.$store.commit('UPDATE_TRAN_AMT', tranAmt);
     }
   }
 });
@@ -2261,27 +2290,39 @@ var x_input_Component = x_input_normalizeComponent(
     url: function url(state) {
       return state.url;
     },
-    cardNo: function cardNo(state) {
-      return state.cardNo;
+    merNo: function merNo(state) {
+      return state.merNo;
+    },
+    termNo: function termNo(state) {
+      return state.termNo;
+    },
+    tranAmt: function tranAmt(state) {
+      return state.tranAmt;
     }
   })),
   methods: {
     updateUrl: function updateUrl(url) {
       this.$store.commit('UPDATE_URL', url);
     },
-    updateCardNo: function updateCardNo(cardNo) {
-      this.$store.commit('UPDATE_CARD_NO', cardNo);
+    updateMerNo: function updateMerNo(merNo) {
+      this.$store.commit('UPDATE_MER_NO', merNo);
+    },
+    updateTermNo: function updateTermNo(termNo) {
+      this.$store.commit('UPDATE_TERM_NO', termNo);
+    },
+    updateTranAmt: function updateTranAmt(tranAmt) {
+      this.$store.commit('UPDATE_TRAN_AMT', tranAmt);
     }
   }
 });
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-6b50771c","hasScoped":true,"transformToRequire":{"video":"src","source":"src","img":"src","image":"xlink:href"},"buble":{"transforms":{}}}!./node_modules/vux-loader/src/before-template-compiler-loader.js!./node_modules/vux-loader/src/template-loader.js!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/components/Url.vue
-var Url_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('logo'),_vm._v(" "),_c('group',{attrs:{"title":"参数设置"}},[_c('x-input',{attrs:{"title":"地址","value":_vm.url},on:{"input":_vm.updateUrl}})],1)],1)}
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-03db3d87","hasScoped":true,"transformToRequire":{"video":"src","source":"src","img":"src","image":"xlink:href"},"buble":{"transforms":{}}}!./node_modules/vux-loader/src/before-template-compiler-loader.js!./node_modules/vux-loader/src/template-loader.js!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/components/Url.vue
+var Url_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('logo'),_vm._v(" "),_c('group',{attrs:{"title":"参数设置"}},[_c('x-input',{attrs:{"title":"地址","value":_vm.url},on:{"input":_vm.updateUrl}}),_vm._v(" "),_c('x-input',{attrs:{"title":"商户号","value":_vm.merNo},on:{"input":_vm.updateMerNo}}),_vm._v(" "),_c('x-input',{attrs:{"title":"终端号","value":_vm.termNo},on:{"input":_vm.updateTermNo}}),_vm._v(" "),_c('x-input',{attrs:{"title":"金额","value":_vm.tranAmt},on:{"input":_vm.updateTranAmt}})],1)],1)}
 var Url_staticRenderFns = []
 var Url_esExports = { render: Url_render, staticRenderFns: Url_staticRenderFns }
 /* harmony default export */ var selectortype_template_index_0_src_components_Url = (Url_esExports);
 // CONCATENATED MODULE: ./src/components/Url.vue
 function Url_injectStyle (ssrContext) {
-  __webpack_require__("lYER")
+  __webpack_require__("Ihgj")
 }
 var Url_normalizeComponent = __webpack_require__("VU/8")
 /* script */
@@ -2294,7 +2335,7 @@ var Url___vue_template_functional__ = false
 /* styles */
 var Url___vue_styles__ = Url_injectStyle
 /* scopeId */
-var Url___vue_scopeId__ = "data-v-6b50771c"
+var Url___vue_scopeId__ = "data-v-03db3d87"
 /* moduleIdentifier (server only) */
 var Url___vue_module_identifier__ = null
 var Url_Component = Url_normalizeComponent(
@@ -3712,14 +3753,14 @@ module.exports = __webpack_require__.p + "static/img/vux_logo.79cbb96.png";
 
 /***/ }),
 
-/***/ "kllH":
+/***/ "hSSI":
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ "lYER":
+/***/ "kllH":
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -4205,6 +4246,42 @@ var alert_Component = alert_normalizeComponent(
 
 /***/ }),
 
+/***/ "nEJf":
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(Buffer) {var NodeRSA = __webpack_require__("jMfe");
+var sha256 = __webpack_require__("EKx1");
+
+var privateKeyData = '-----BEGIN PRIVATE KEY-----\nMIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAKAUZV+tjiNBKhlBZbKBnzeugpdYPhh5PbHanjV0aQ+LF7vetPYhbTiCVqA3a+Chmge44+prlqd3qQCYra6OYIe7oPVq4mETa1c/7IuSlKJgxC5wMqYKxYydb1eULkrs5IvvtNddx+9O/JlyM5sTPosgFHOzr4WqkVtQ71IkR+HrAgMBAAECgYAkQLo8kteP0GAyXAcmCAkA2Tql/8wASuTX9ITD4lsws/VqDKO64hMUKyBnJGX/91kkypCDNF5oCsdxZSJgV8owViYWZPnbvEcNqLtqgs7nj1UHuX9S5yYIPGN/mHL6OJJ7sosOd6rqdpg6JRRkAKUV+tmN/7Gh0+GFXM+ug6mgwQJBAO9/+CWpCAVoGxCA+YsTMb82fTOmGYMkZOAfQsvIV2v6DC8eJrSa+c0yCOTa3tirlCkhBfB08f8U2iEPS+Gu3bECQQCrG7O0gYmFL2RX1O+37ovyyHTbst4s4xbLW4jLzbSoimL235lCdIC+fllEEP96wPAiqo6dzmdH8KsGmVozsVRbAkB0ME8AZjp/9Pt8TDXD5LHzo8mlruUdnCBcIo5TMoRG2+3hRe1dHPonNCjgbdZCoyqjsWOiPfnQ2Brigvs7J4xhAkBGRiZUKC92x7QKbqXVgN9xYuq7oIanIM0nz/wq190uq0dh5Qtow7hshC/dSK3kmIEHe8z++tpoLWvQVgM538apAkBoSNfaTkDZhFavuiVl6L8cWCoDcJBItip8wKQhXwHp0O3HLg10OEd14M58ooNfpgt+8D8/8/2OOFaR0HzA+2Dm\n-----END PRIVATE KEY-----';
+
+var privateKey = new NodeRSA(privateKeyData, 'pkcs8', {
+  environment: 'browser'
+});
+
+var sign = function sign(data) {
+  return privateKey.encryptPrivate(sha256(data), 'base64');
+};
+
+var publicKeyData = '-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCgFGVfrY4jQSoZQWWygZ83roKXWD4YeT2x2p41dGkPixe73rT2IW04glagN2vgoZoHuOPqa5and6kAmK2ujmCHu6D1auJhE2tXP+yLkpSiYMQucDKmCsWMnW9XlC5K7OSL77TXXcfvTvyZcjObEz6LIBRzs6+FqpFbUO9SJEfh6wIDAQAB\n-----END PUBLIC KEY-----';
+
+var publicKey = new NodeRSA(publicKeyData, 'pkcs8-public', {
+  environment: 'browser'
+});
+
+var verity = function verity(data, sign) {
+  var dataHash = sha256(data);
+  var signHash = publicKey.decryptPublic(new Buffer(sign, 'base64')).toString();
+  return dataHash === signHash;
+};
+
+module.exports = {
+  sign: sign,
+  verity: verity
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__("EuP9").Buffer))
+
+/***/ }),
+
 /***/ "owug":
 /***/ (function(module, exports) {
 
@@ -4474,4 +4551,4 @@ var Component = normalizeComponent(
 /***/ })
 
 },["NHnr"]);
-//# sourceMappingURL=app.ad1ad3e181bb76fbc55d.js.map
+//# sourceMappingURL=app.82f9b488ed7837632b44.js.map
