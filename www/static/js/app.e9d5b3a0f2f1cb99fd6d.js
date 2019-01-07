@@ -171,9 +171,9 @@ var tranAmt = window.localStorage.tranAmt;
 
 var state = {
   isLoading: true,
-  url: url ? url : 'http://172.18.1.161:9999/purchase',
+  url: url ? url : 'https://eccst.sg.ebs.bankofchina.com/sgecm/merapi/purchase',
   merNo: merNo ? merNo : '104767011000006',
-  termNo: termNo ? termNo : '12345678',
+  termNo: termNo ? termNo : '76002432',
   tranAmt: tranAmt ? tranAmt : 100
 };
 
@@ -197,7 +197,7 @@ var state = {
     },
     UPDATE_TRAN_AMT: function UPDATE_TRAN_AMT(state, tranAmt) {
       window.localStorage.setItem('tranAmt', tranAmt);
-      state.termNo = termNo;
+      state.tranAmt = tranAmt;
     }
   }
 }));
@@ -4551,4 +4551,4 @@ var Component = normalizeComponent(
 /***/ })
 
 },["NHnr"]);
-//# sourceMappingURL=app.82f9b488ed7837632b44.js.map
+//# sourceMappingURL=app.e9d5b3a0f2f1cb99fd6d.js.map
